@@ -20,6 +20,7 @@ Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 // Connect a stepper motor with 48 steps per revolution (7.5 degree)
 // to motor port #2 (M3 and M4)
 Adafruit_StepperMotor *myMotor = AFMS.getStepper(48, 2);
+Adafruit_StepperMotor *Motor = AFMS.getStepper(48,1);
 
 
 void setup() {
@@ -30,11 +31,13 @@ void setup() {
   //AFMS.begin(1000);  // OR with a different frequency, say 1KHz
   
   myMotor->setSpeed(60);  // 60 rpm   
+  Motor->setSpeed(60);
 }
 
 void loop() {
   Serial.println("Single coil steps");
   myMotor->step(100, FORWARD, SINGLE); 
+  Motor->step(100,FORWARD,SINGLE);
   //myMotor->step(100, BACKWARD, SINGLE); 
 
  // Serial.println("Double coil steps");
